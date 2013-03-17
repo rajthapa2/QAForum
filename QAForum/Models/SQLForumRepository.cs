@@ -128,5 +128,11 @@ namespace QAForum.Models
             forumDB.SaveChanges();
         }
 
+
+
+        Forum IForumRepository.GetForumByID(int ForumID)
+        {
+            return forumDB.Forums.Single(f => f.ForumID == ForumID);
+        }
     }
 }

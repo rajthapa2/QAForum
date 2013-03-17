@@ -9,6 +9,8 @@ namespace QAForum.Models
     {
         IEnumerable<Forum> GetAllForums();
 
+        Forum GetForumByID(int ForumID);
+
         IEnumerable<Thread> GetAllThreads();
         IEnumerable<Post> GetAllPosts();
 
