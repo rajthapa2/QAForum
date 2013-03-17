@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAForum", "QAForum\QAForum.csproj", "{854399FD-785B-42D8-B167-58C43079CCC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAForum.Tests", "QAForum.Tests\QAForum.Tests.csproj", "{B2E1BE88-DDCE-49CA-8419-D44A56982AB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{854399FD-785B-42D8-B167-58C43079CCC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854399FD-785B-42D8-B167-58C43079CCC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854399FD-785B-42D8-B167-58C43079CCC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854399FD-785B-42D8-B167-58C43079CCC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2E1BE88-DDCE-49CA-8419-D44A56982AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E1BE88-DDCE-49CA-8419-D44A56982AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E1BE88-DDCE-49CA-8419-D44A56982AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E1BE88-DDCE-49CA-8419-D44A56982AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
