@@ -28,11 +28,18 @@ namespace QAForum.Models
         IEnumerable<Thread> IForumRepository.GetThreadsByForum(int ForumID)
         {
             return (from thread in forumDB.Threads where thread.ForumID == ForumID select thread).ToList();
+
+         
         }
 
         Thread IForumRepository.GetThreadByID(int ThreadID)
         {
-            return forumDB.Threads.Single(t => t.ThreadID == ThreadID);
+            //return forumDB.Threads.Single(t => t.ThreadID == ThreadID);
+
+            //return (Thread) (from thread in forumDB.Threads where thread.ThreadID == ThreadID select thread);
+
+
+              return forumDB.Threads.Single(t => t.ThreadID == ThreadID);
         }
 
         IEnumerable<Post> IForumRepository.GetPostsByThread(int ThreadID)

@@ -7,49 +7,51 @@ using QAForum.Models;
 
 namespace QAForum.Controllers
 {
-    public class ForumController : Controller
+    public class ThreadController : Controller
     {
         //
-        // GET: /Forum/
+        // GET: /Thread/
 
         public ActionResult Index()
         {
             IForumRepository tmpRep = new SQLForumRepository();
-            var result = tmpRep.GetAllForums();
-            ViewBag.Message = "QA Forum List";
+            var result = tmpRep.GetAllThreads();
+            ViewBag.Message = "QA Forums list [threads]";
             return View(result);
         }
 
         //
-        // GET: /Forum/Details/5
+        // GET: /Thread/Details/5
 
         public ActionResult Details(int id)
         {
             IForumRepository tmpRep = new SQLForumRepository();
-            var result = tmpRep.GetForumByID(id);
-            ViewBag.Message = "Forum detail";
+            var result= tmpRep.GetThreadByID(id);
+            ViewBag.Message = "Thread Detail";
             return View(result);
         }
 
         //
-        // GET: /Forum/Create
+        // GET: /Thread/Create
 
         public ActionResult Create()
         {
-            Forum forum = new Forum();
-            return View(forum);
+            Thread thread = new Thread();
+            return View(thread);
         } 
 
         //
-        // POST: /Forum/Create
+        // POST: /Thread/Create
 
         [HttpPost]
-        public ActionResult Create(Forum forum)
+        public ActionResult Create(Thread thread)
         {
             try
             {
+                // TODO: Add insert logic here
+
                 IForumRepository tmpRep = new SQLForumRepository();
-                tmpRep.AddForum(forum);
+                tmpRep.AddThread(thread);
                 return RedirectToAction("Index");
             }
             catch
@@ -59,27 +61,28 @@ namespace QAForum.Controllers
         }
         
         //
-        // GET: /Forum/Edit/5
+        // GET: /Thread/Edit/5
  
         public ActionResult Edit(int id)
         {
+
             IForumRepository tmpRep = new SQLForumRepository();
-            var result = tmpRep.GetForumByID(id);
-            return View(result);
+            var thread = tmpRep.GetThreadByID(id);
+            return View(thread);
         }
 
         //
-        // POST: /Forum/Edit/5
+        // POST: /Thread/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, Forum forum)
+        public ActionResult Edit(int id, Thread thread)
         {
             try
             {
                 // TODO: Add update logic here
 
                 IForumRepository tmpRep = new SQLForumRepository();
-                tmpRep.UpdateForum(forum);
+                tmpRep.UpdateThread(thread);
                 return RedirectToAction("Index");
             }
             catch
@@ -89,29 +92,39 @@ namespace QAForum.Controllers
         }
 
         //
-        // GET: /Forum/Delete/5
+        // GET: /Thread/Delete/5
  
         public ActionResult Delete(int id)
         {
             IForumRepository tmpRep = new SQLForumRepository();
-            var result = tmpRep.GetForumByID(id);
-            return View();
+            var thread = tmpRep.GetThreadByID(id);
+            tmpRep.DeleteThread(thread);
+            return View(thread);
         }
 
         //
-        // POST: /Forum/Delete/5
+        // POST: /Thread/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Thread thread)
         {
             try
             {
                 // TODO: Add delete logic here
 
                 IForumRepository tmpRep = new SQLForumRepository();
-                var forum= tmpRep.GetForumByID(id);
-                tmpRep.DeleteForum(forum);
+                tmpRep.DeleteThread(thread);
                 return RedirectToAction("Index");
+
+                //IForumRepository tmpRep = new SQLForumRepository();
+
+                //var thread = tmpRep.GetThreadByID(id);
+
+                //tmpRep.DeleteThread(thread);
+
+                //return RedirectToAction("Index");
+
+
             }
             catch
             {
