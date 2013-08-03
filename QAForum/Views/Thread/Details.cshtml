@@ -1,20 +1,16 @@
-﻿@model QAForum.Models.Forum
+﻿@model QAForum.Models.Thread
 
-@{
-    ViewBag.Message;
-}
-
-<h2>Details</h2>
+<h2>@ViewBag.Message;</h2>
 
 <fieldset>
-    <legend>Forum</legend>
+    <legend>Thread</legend>
 
-    <div class="display-label">ForumTitle</div>
+    <div class="display-label">ThreadTitle</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.ForumTitle)
+        @Html.DisplayFor(model => model.ThreadTitle)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ForumID }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ThreadID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

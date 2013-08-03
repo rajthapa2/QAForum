@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace QAForum.Models
 {
@@ -18,7 +14,5 @@ namespace QAForum.Models
             modelBuilder.Entity<Forum>().ToTable("Forums");
             modelBuilder.Entity<User>().ToTable("aspnet_Users");
         }
-             
-
     }
 }

@@ -1,0 +1,43 @@
+﻿@model QAForum.Models.Post
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>@ViewBag.Message</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Post</legend>
+
+    <div class="display-label">UserID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserID)
+    </div>
+
+    <div class="display-label">ThreadID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ThreadID)
+    </div>
+
+    <div class="display-label">PostTitle</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostTitle)
+    </div>
+
+    <div class="display-label">PostDateTime</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostDateTime)
+    </div>
+
+    <div class="display-label">PostBody</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostBody)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

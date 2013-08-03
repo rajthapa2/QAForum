@@ -1,0 +1,40 @@
+﻿@model QAForum.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@ViewBag.Message</h2>
+
+<fieldset>
+    <legend>Post</legend>
+
+    <div class="display-label">UserID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserID)
+    </div>
+
+    <div class="display-label">ThreadID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ThreadID)
+    </div>
+
+    <div class="display-label">PostTitle</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostTitle)
+    </div>
+
+    <div class="display-label">PostDateTime</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostDateTime)
+    </div>
+
+    <div class="display-label">PostBody</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostBody)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PostID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -32,8 +32,8 @@ namespace QAForum.Controllers
 
         public ActionResult Create()
         {
-            Thread thread = new Thread();
-            return View(thread);
+            ViewBag.Message = "Create";
+            return View(new Thread());
         } 
 
         //
@@ -61,7 +61,7 @@ namespace QAForum.Controllers
  
         public ActionResult Edit(int id)
         {
-
+            ViewBag.Message = "Edit";
             IForumRepository tmpRep = new SQLForumRepository();
             var thread = tmpRep.GetThreadByID(id);
             return View(thread);
@@ -92,9 +92,9 @@ namespace QAForum.Controllers
  
         public ActionResult Delete(int id)
         {
+            ViewBag.Message = "Delete";
             IForumRepository tmpRep = new SQLForumRepository();
             var thread = tmpRep.GetThreadByID(id);
-            tmpRep.DeleteThread(thread);
             return View(thread);
         }
 
