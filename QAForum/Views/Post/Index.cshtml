@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+
 <h2>@ViewBag.Message</h2>
 
 <p>
@@ -10,22 +11,48 @@
 </p>
 <table>
     <tr>
-        <th>
-            Title
-        </th>
         <th></th>
+        <th>
+            UserID
+        </th>
+        <th>
+            ThreadID
+        </th>
+        <th>
+            PostTitle
+        </th>
+        <th>
+            PostDateTime
+        </th>
+        <th>
+            PostBody
+        </th>
     </tr>
-@foreach (var item in Model)
-{
-<tr>
-<td>
-@Html.DisplayFor(modelItem => item.PostTitle)
-</td>
-<td>
-@Html.ActionLink("Edit", "Edit", new { id = item.PostID }) |
-@Html.ActionLink("Details", "Details", new { id = item.PostID }) |
-@Html.ActionLink("Delete", "Delete", new { id = item.PostID }) 
-</td>
-</tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PostID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PostID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PostID })
+        </td>
+        <td>
+            @item.UserID
+        </td>
+        <td>
+            @item.ThreadID
+        </td>
+        <td>
+            @item.PostTitle
+        </td>
+        <td>
+            @String.Format("{0:g}", item.PostDateTime)
+        </td>
+        <td>
+            @item.PostBody
+        </td>
+    </tr>
 }
+
 </table>
+

@@ -9,14 +9,17 @@
     <div class="page">
         <div id="header">
             <div id="title">
-                <h1>My MVC Application</h1>
+                <h1>QAForum</h1>
             </div>
             <div id="logindisplay">
                 @Html.Partial("_LogOnPartial")
-            </div>
+            </div>5
             <div id="menucontainer">
                 <ul id="menu">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Forums", "Index", "Forum")</li>
+                    <li>@Html.ActionLink("Threads", "Index", "Thread")</li>
+                    <li>@Html.ActionLink("Posts", "Index", "Post")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                 </ul>
             </div>

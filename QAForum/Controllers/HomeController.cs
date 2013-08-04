@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 using QAForum.Models;
+
 
 namespace QAForum.Controllers
 {
@@ -11,14 +13,11 @@ namespace QAForum.Controllers
     {
         public ActionResult Index()
         {
-            //ForumEntities forumDB = new ForumEntities();
-            //var result = forumDB.Forums.ToList();
 
-            IForumRepository tempRep = new SQLForumRepository();
-            var result = tempRep.GetAllForums();
-            ViewBag.Message = "Welcome to QA Forum!";
+            ViewBag.Message = "Welcome to the QA Forum!";
 
-            return View(result);
+            return View();
+
         }
 
         public ActionResult About()

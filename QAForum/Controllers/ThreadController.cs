@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using QAForum.Models;
 
 namespace QAForum.Controllers
@@ -11,8 +15,11 @@ namespace QAForum.Controllers
         public ActionResult Index()
         {
             IForumRepository tmpRep = new SQLForumRepository();
+
             var result = tmpRep.GetAllThreads();
+
             ViewBag.Message = "QA Forums list [threads]";
+
             return View(result);
         }
 
@@ -22,8 +29,11 @@ namespace QAForum.Controllers
         public ActionResult Details(int id)
         {
             IForumRepository tmpRep = new SQLForumRepository();
-            var result= tmpRep.GetThreadByID(id);
-            ViewBag.Message = "Thread Detail";
+
+            var result = tmpRep.GetThreadByID(id);
+
+            ViewBag.Message = "Thread detail";
+
             return View(result);
         }
 
@@ -32,8 +42,9 @@ namespace QAForum.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Message = "Create";
-            return View(new Thread());
+            Thread thread = new Thread();
+
+            return View(thread);
         } 
 
         //
@@ -47,7 +58,9 @@ namespace QAForum.Controllers
                 // TODO: Add insert logic here
 
                 IForumRepository tmpRep = new SQLForumRepository();
+
                 tmpRep.AddThread(thread);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -61,10 +74,11 @@ namespace QAForum.Controllers
  
         public ActionResult Edit(int id)
         {
-            ViewBag.Message = "Edit";
             IForumRepository tmpRep = new SQLForumRepository();
-            var thread = tmpRep.GetThreadByID(id);
-            return View(thread);
+
+            var result = tmpRep.GetThreadByID(id);
+
+            return View(result);
         }
 
         //
@@ -78,8 +92,11 @@ namespace QAForum.Controllers
                 // TODO: Add update logic here
 
                 IForumRepository tmpRep = new SQLForumRepository();
+
                 tmpRep.UpdateThread(thread);
+
                 return RedirectToAction("Index");
+
             }
             catch
             {
@@ -92,35 +109,30 @@ namespace QAForum.Controllers
  
         public ActionResult Delete(int id)
         {
-            ViewBag.Message = "Delete";
             IForumRepository tmpRep = new SQLForumRepository();
-            var thread = tmpRep.GetThreadByID(id);
-            return View(thread);
+
+            var result = tmpRep.GetThreadByID(id);
+
+            return View(result);
         }
 
         //
         // POST: /Thread/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, Thread thread)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
 
                 IForumRepository tmpRep = new SQLForumRepository();
+
+                var thread = tmpRep.GetThreadByID(id);
+
                 tmpRep.DeleteThread(thread);
+
                 return RedirectToAction("Index");
-
-                //IForumRepository tmpRep = new SQLForumRepository();
-
-                //var thread = tmpRep.GetThreadByID(id);
-
-                //tmpRep.DeleteThread(thread);
-
-                //return RedirectToAction("Index");
-
-
             }
             catch
             {

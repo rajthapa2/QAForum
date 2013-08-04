@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
 using QAForum.Models;
 
 namespace QAForum.Controllers
@@ -11,20 +16,25 @@ namespace QAForum.Controllers
         public ActionResult Index()
         {
             IForumRepository tmpRep = new SQLForumRepository();
+
             var result = tmpRep.GetAllForums();
-            ViewBag.Message = "QA Forum List";
+
+            ViewBag.Message = "QA Forums list";
+
             return View(result);
         }
 
-        //
-        // GET: /Forum/Details/5
-
         public ActionResult Details(int id)
         {
+
             IForumRepository tmpRep = new SQLForumRepository();
+
             var result = tmpRep.GetForumByID(id);
+
             ViewBag.Message = "Forum detail";
+
             return View(result);
+
         }
 
         //
@@ -33,19 +43,23 @@ namespace QAForum.Controllers
         public ActionResult Create()
         {
             Forum forum = new Forum();
+
             return View(forum);
         } 
 
         //
-        // POST: /Forum/Create
-
+        // POST: /Forum/Create        
         [HttpPost]
         public ActionResult Create(Forum forum)
         {
             try
             {
+                // TODO: Add insert logic here
+
                 IForumRepository tmpRep = new SQLForumRepository();
+
                 tmpRep.AddForum(forum);
+                                
                 return RedirectToAction("Index");
             }
             catch
@@ -59,8 +73,11 @@ namespace QAForum.Controllers
  
         public ActionResult Edit(int id)
         {
+
             IForumRepository tmpRep = new SQLForumRepository();
+
             var result = tmpRep.GetForumByID(id);
+
             return View(result);
         }
 
@@ -75,7 +92,9 @@ namespace QAForum.Controllers
                 // TODO: Add update logic here
 
                 IForumRepository tmpRep = new SQLForumRepository();
+
                 tmpRep.UpdateForum(forum);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -90,8 +109,10 @@ namespace QAForum.Controllers
         public ActionResult Delete(int id)
         {
             IForumRepository tmpRep = new SQLForumRepository();
+
             var result = tmpRep.GetForumByID(id);
-            return View();
+
+            return View(result);
         }
 
         //
@@ -105,8 +126,11 @@ namespace QAForum.Controllers
                 // TODO: Add delete logic here
 
                 IForumRepository tmpRep = new SQLForumRepository();
-                var forum= tmpRep.GetForumByID(id);
+
+                var forum = tmpRep.GetForumByID(id);
+
                 tmpRep.DeleteForum(forum);
+
                 return RedirectToAction("Index");
             }
             catch
